@@ -32,37 +32,6 @@
             cursor: pointer;
             border-radius: 5px;
         }
-        form 
-        <form id="afiliacionForm">
-    <input type="text" name="nombre" placeholder="Nombre Completo" required>
-    <input type="text" name="documento" placeholder="Número de Documento" required>
-    <input type="email" name="email" placeholder="Correo Electrónico" required>
-    <input type="tel" name="telefono" placeholder="Teléfono" required>
-    <button type="submit">Enviar Solicitud</button>
-</form>
-
-<script>
-document.getElementById("afiliacionForm").addEventListener("submit", function(event){
-    event.preventDefault();
-    
-    var formData = {
-        nombre: document.querySelector("[name='nombre']").value,
-        documento: document.querySelector("[name='documento']").value,
-        email: document.querySelector("[name='email']").value,
-        telefono: document.querySelector("[name='telefono']").value
-    };
-
-    fetch(https://script.google.com/macros/s/AKfycbzkajkOQ7l-C7oWX9P8x1nnVBWnlTWtzKlmfis7KItXHQ7n0VY1fAuKGeI9LWr8XsYs/exec, {
-        method: "POST",
-        body: JSON.stringify(formData),
-        headers: { "Content-Type": "application/json" }
-    })
-    .then(response => response.text())
-    .then(data => alert("Afiliado registrado con éxito"))
-    .catch(error => alert("Error al registrar afiliado"));
-});
-</script>
-
         input {
             width: 90%;
             padding: 10px;
@@ -76,7 +45,6 @@ document.getElementById("afiliacionForm").addEventListener("submit", function(ev
     <header>MERO LOVE - AFILIACIÓN</header>
     <section class="hero">
         <h1>¡Únete a Mero Love y gana con cada evento!</h1>
-        <button class="button">Afíliate Ahora</button>
     </section>
     <section>
         <h2>Beneficios de Afiliarte</h2>
@@ -86,16 +54,38 @@ document.getElementById("afiliacionForm").addEventListener("submit", function(ev
     </section>
     <section>
         <h2>Formulario de Afiliación</h2>
-        <form>
-            <input type="text" placeholder="Nombre Completo" required>
-            <input type="text" placeholder="Número de Documento" required>
-            <input type="email" placeholder="Correo Electrónico" required>
-            <input type="tel" placeholder="Teléfono" required>
+        <form id="afiliacionForm">
+            <input type="text" name="nombre" placeholder="Nombre Completo" required>
+            <input type="text" name="documento" placeholder="Número de Documento" required>
+            <input type="email" name="email" placeholder="Correo Electrónico" required>
+            <input type="tel" name="telefono" placeholder="Teléfono" required>
             <button type="submit" class="button">Enviar Solicitud</button>
         </form>
     </section>
     <footer>
         <p>Síguenos en redes sociales | Contacto: info@merolove.com</p>
     </footer>
+
+    <script>
+    document.getElementById("afiliacionForm").addEventListener("submit", function(event){
+        event.preventDefault();
+        
+        var formData = {
+            nombre: document.querySelector("[name='nombre']").value,
+            documento: document.querySelector("[name='documento']").value,
+            email: document.querySelector("[name='email']").value,
+            telefono: document.querySelector("[name='telefono']").value
+        };
+
+        fetch("https://script.google.com/macros/s/AKfycbzkajkOQ7l-C7oWX9P8x1nnVBWnlTWtzKlmfis7KItXHQ7n0VY1fAuKGeI9LWr8XsYs/exec", {
+            method: "POST",
+            body: JSON.stringify(formData),
+            headers: { "Content-Type": "application/json" }
+        })
+        .then(response => response.text())
+        .then(data => alert("Afiliado registrado con éxito"))
+        .catch(error => alert("Error al registrar afiliado"));
+    });
+    </script>
 </body>
 </html>
