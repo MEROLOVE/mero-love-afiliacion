@@ -67,35 +67,37 @@
     </footer>
 
     <script>
-    document.getElementById("afiliacionForm").addEventListener("submit", function(event) {
-    event.preventDefault();
+    document.addEventListener("DOMContentLoaded", function() {
+        document.getElementById("afiliacionForm").addEventListener("submit", function(event) {
+            event.preventDefault();
 
-    console.log("Formulario enviado, iniciando fetch..."); // <-- Mensaje para verificar
+            console.log("Formulario enviado, iniciando fetch...");
 
-    var formData = {
-        nombre: document.querySelector("[name='nombre']").value,
-        documento: document.querySelector("[name='documento']").value,
-        email: document.querySelector("[name='email']").value,
-        telefono: document.querySelector("[name='telefono']").value
-    };
+            var formData = {
+                nombre: document.querySelector("[name='nombre']").value,
+                documento: document.querySelector("[name='documento']").value,
+                email: document.querySelector("[name='email']").value,
+                telefono: document.querySelector("[name='telefono']").value
+            };
 
-    console.log("Datos enviados:", formData); // <-- Verifica que los datos se están capturando
+            console.log("Datos enviados:", formData);
 
-    fetch("https://script.google.com/macros/s/1O3X7iUtw-Pr37a-5Edr19gdU675nC5G-7HGgIMS36LE/exec", {
-        method: "POST",
-        body: JSON.stringify(formData),
-        headers: { "Content-Type": "application/json" }
-    })
-    .then(response => response.text())
-    .then(data => {
-        console.log("Respuesta del servidor:", data); // <-- Verifica la respuesta del Web App
-        alert("Afiliado registrado con éxito");
-    })
-    .catch(error => {
-        console.error("Error en el envío:", error);
-        alert("Error al registrar afiliado");
+            fetch("https://script.google.com/macros/s/1O3X7iUtw-Pr37a-5Edr19gdU675nC5G-7HGgIMS36LE/exec", {
+                method: "POST",
+                body: JSON.stringify(formData),
+                headers: { "Content-Type": "application/json" }
+            })
+            .then(response => response.text())
+            .then(data => {
+                console.log("Respuesta del servidor:", data);
+                alert("Afiliado registrado con éxito");
+            })
+            .catch(error => {
+                console.error("Error en el envío:", error);
+                alert("Error al registrar afiliado");
+            });
+        });
     });
-});
     </script>
 </body>
 </html>
