@@ -90,7 +90,11 @@
             .then(response => response.text())
             .then(data => {
                 console.log("Respuesta del servidor:", data);
-                alert("Afiliado registrado con éxito");
+                if (data.includes("Registro exitoso")) {
+                    alert("Afiliado registrado con éxito");
+                } else {
+                    alert("Hubo un problema al registrar afiliado: " + data);
+                }
             })
             .catch(error => {
                 console.error("Error en el envío:", error);
