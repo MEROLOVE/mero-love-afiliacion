@@ -68,7 +68,13 @@
 
     <script>
     document.addEventListener("DOMContentLoaded", function() {
-        document.getElementById("afiliacionForm").addEventListener("submit", function(event) {
+        const form = document.getElementById("afiliacionForm");
+        if (!form) {
+            console.error("Formulario no encontrado");
+            return;
+        }
+
+        form.addEventListener("submit", function(event) {
             event.preventDefault();
 
             console.log("Formulario enviado, iniciando fetch...");
